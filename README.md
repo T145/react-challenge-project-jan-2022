@@ -46,11 +46,11 @@ This is a multi-container docker environment that utilizes Docker to create thre
 
 ## Development process
 
-Shutting down the servers can be done with a Ctrl-C command from your terminal. Alternatively, you can load up Kitematic to close them as well. Ctrl-C also works for shutting down the client.
+Shutting down the servers can be done with a Ctrl-C command from your terminal or through Docker Desktop. Ctrl-C also works for shutting down the client.
 
-If you need to exec into one of the containers, Kitematic has a GUI to do that for you. Otherwise, you will need to run `docker ps`, find the container ID, and then run `docker exec (container_name) -it bash`.
+If you need to `exec` into one of the containers, use Docker Desktop's GUI or do the manual process. This involves running `docker ps`, finding the container ID, and running `docker exec (container_name) -it bash`.
 
-Kitematic can also be useful for looking at the logs for one specific container, since all three are tailed in the terminal.
+Docker Desktop can also be useful for looking at a specific container's logs, since all three are tailed in the terminal.
 
 ## Endpoint testing
 
