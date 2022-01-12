@@ -8,4 +8,4 @@ ADD "./package.json" "/home/node/server/package.json"
 
 RUN chmod +x prepare.bash && ./prepare.bash
 
-CMD ["npm", "start"]
+CMD ["pnpm", "start"]
