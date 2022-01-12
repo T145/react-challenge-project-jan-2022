@@ -6,6 +6,12 @@ WORKDIR /home/node/server
 
 ADD "./package.json" "/home/node/server/package.json"
 
-RUN chmod +x prepare.bash && ./prepare.bash
+RUN ["npm", "i", "-g", "pnpm"]
+
+RUN ["npm", "i", "-g", "nodemon"]
+
+RUN ["pnpm", "i", "opencollective-postinstall"]
+
+#npm i --no-bin-links --no-optional
 
 CMD ["pnpm", "start"]
