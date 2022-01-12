@@ -13,8 +13,8 @@ Once you have created your fork, review the Issues labeled `challenge task` [HER
 Once you are ready to submit your work, send an email to your Shift3 contact with a link to your fork.
 
 **Please apply the following Shift3 Standard Practices as you work on this project:**
-- Each unit of work (Issue) should be completed within its own [branch](https://github.com/Shift3/standards-and-practices/blob/master/standards/branching.md).
-- Use Karma-style formatting for your [Git Commit Messages](https://github.com/Shift3/standards-and-practices/blob/master/standards/commits.md).
+- Each unit of work (Issue) should be completed within its own [branch](https://github.com/Shift3/standards-and-practices/blob/main/standards/branching.md).
+- Use Karma-style formatting for your [Git Commit Messages](https://github.com/Shift3/standards-and-practices/blob/main/standards/commits.md).
 - Generate a PR for each unit of work (Issue) which is completed. Keep the scope of these PRs as narrow as possible. Try not to create PRs which rely on or contain code from previous PRs unless there is truly a dependency between the two units of work.
 
 ## Project Information
