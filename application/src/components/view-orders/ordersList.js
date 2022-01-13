@@ -1,5 +1,5 @@
 import React from 'react';
-import { SERVER_IP } from '../../private';
+import { SERVER_IP, HEADERS } from '../../private';
 
 const DELETE_ORDER_URL = `${SERVER_IP}/api/delete-order`;
 
@@ -18,12 +18,7 @@ const OrdersList = (props) => {
             body: JSON.stringify({
                 id: orderId
             }),
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Content-Type-Options': 'nosniff', // reinforces the declared content-type
-                'X-XSS-Protection': '1; mode=block',
-                'X-Frame-Options': 'sameorigin'
-            }
+            headers: HEADERS,
         })
         .then(res => res.json())
         .then(() => window.location.reload());

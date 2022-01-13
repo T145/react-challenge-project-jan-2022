@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Template } from '../../components';
-import { SERVER_IP } from '../../private';
+import { SERVER_IP, HEADERS } from '../../private';
 import './orderForm.css';
 
 const ADD_ORDER_URL = `${SERVER_IP}/api/add-order`;
@@ -24,12 +24,7 @@ export default function OrderForm(props) {
                 quantity,
                 ordered_by: auth.email || 'Unknown!',
             }),
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Content-Type-Options': 'nosniff', // reinforces the declared content-type
-                'X-XSS-Protection': '1; mode=block',
-                'X-Frame-Options': 'sameorigin'
-            }
+            headers: HEADERS,
         }).then(res => res.json());
         //.then(response => console.log("Success", JSON.stringify(response)))
         //.catch(error => console.error(error));
