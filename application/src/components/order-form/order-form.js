@@ -7,11 +7,11 @@ import './orderForm.css';
 const ADD_ORDER_URL = `${SERVER_IP}/api/add-order`;
 
 export default function OrderForm(props) {
-    const [orderItem, setOrderItem] = useState("");
-    const [quantity, setQuantity] = useState("1");
+    const [orderItem, setOrderItem] = useState('');
+    const [quantity, setQuantity] = useState(1);
 
-    const menuItemChosen = (event) => setOrderItem(event.value);
-    const menuQuantityChosen = (event) => setQuantity(event.value);
+    const menuItemChosen = (event) => setOrderItem(event.target.value);
+    const menuQuantityChosen = (event) => setQuantity(event.target.value);
 
     const auth = useSelector((state) => state.auth);
 
@@ -25,12 +25,14 @@ export default function OrderForm(props) {
                 ordered_by: auth.email || 'Unknown!',
             }),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'X-Content-Type-Options': 'nosniff', // reinforces the declared content-type
+                'X-XSS-Protection': '1; mode=block',
+                'X-Frame-Options': 'sameorigin'
             }
-        })
-        .then(res => res.json())
-        .then(response => console.log("Success", JSON.stringify(response)))
-        .catch(error => console.error(error));
+        }).then(res => res.json());
+        //.then(response => console.log("Success", JSON.stringify(response)))
+        //.catch(error => console.error(error));
     }
 
     return (
