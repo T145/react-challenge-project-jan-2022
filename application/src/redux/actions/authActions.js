@@ -1,5 +1,5 @@
 import { LOGIN, LOGOUT } from './types';
-import { SERVER_IP } from '../../private'
+import { HEADERS, SERVER_IP } from '../../private'
 
 const finishLogin = (email, token) => {
     return {
@@ -19,13 +19,12 @@ export const loginUser = (email, password) => {
                 email,
                 password
             }),
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        }).then(response => response.json())
-        .then(response => {
-            if (response.success) {
-                dispatch(finishLogin(response.email, response.token));
+            headers: HEADERS,
+        })
+        .then(res => res.json())
+        .then(res => {
+            if (res.success) {
+                dispatch(finishLogin(res.email, res.token));
             }
         })
     };
