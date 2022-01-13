@@ -1,4 +1,4 @@
-FROM node:11
+FROM node:16.13.2
 
 RUN ln -fs /usr/share/zoneinfo/US/Pacific-New /etc/localtime && dpkg-reconfigure -f noninteractive tzdata
 
@@ -6,10 +6,12 @@ WORKDIR /home/node/server
 
 ADD "./package.json" "/home/node/server/package.json"
 
-RUN ["npm", "install", "nodemon", "-g"]
+RUN ["npm", "i", "-g", "pnpm"]
 
-RUN ["npm", "install", "opencollective-postinstall", "--save"]
+RUN ["npm", "i", "-g", "nodemon"]
 
-RUN ["npm", "install", "--no-bin-links", "--no-optional"]
+RUN ["pnpm", "i", "opencollective-postinstall"]
 
-CMD ["npm", "start"]
+#npm i --no-bin-links --no-optional
+
+CMD ["pnpm", "start"]
