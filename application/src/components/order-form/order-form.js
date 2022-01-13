@@ -27,10 +27,9 @@ export default function OrderForm(props) {
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
-        .then(res => res.json())
-        .then(response => console.log("Success", JSON.stringify(response)))
-        .catch(error => console.error(error));
+        }).then(res => res.json());
+        //.then(response => console.log("Success", JSON.stringify(response)))
+        //.catch(error => console.error(error));
     }
 
     return (
