@@ -14,21 +14,35 @@ describe('Orders List', () => {
         expect(arr.length).toBe(1);
     });
 
-    test('renders one order', () => {
-        const orders = [
-            {
-                order_item: "Food",
-                quantity: "777",
-                _id: 1
-            }
-        ];
+    function testSingleOrder() {
         render(
             <OrdersList
-                orders={orders}
+                orders={[
+                    {
+                        order_item: "Food",
+                        quantity: "777",
+                        _id: 1,
+                        createdAt: Date.now(),
+                    }
+                ]}
             />
         )
         expect(screen.getByText('Food')).toBeInTheDocument();
         expect(screen.getByText(/^.*777.*$/gm)).toBeInTheDocument();
+    }
+
+    test('renders one order', () => {
+        testSingleOrder();
+    });
+
+    test('renders order time correctly', () => {
+        testSingleOrder();
+
+        const regex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/;
+        const paragraph = screen.getByText(/^.*Order placed at.*$/gm);
+        const time = paragraph.textContent.split(' ')[3];
+
+        expect(regex.test(time)).toBe(true);
     });
 
     test('renders multiple orders', () => {
@@ -53,6 +67,5 @@ describe('Orders List', () => {
         expect(screen.getByText(/^.*777.*$/gm)).toBeInTheDocument();
         expect(screen.getByText('Drink')).toBeInTheDocument();
         expect(screen.getByText(/^.*888.*$/gm)).toBeInTheDocument();
-
     });
 })
