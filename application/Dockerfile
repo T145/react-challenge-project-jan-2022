@@ -1,9 +1,11 @@
-FROM node:11
+FROM node:16.13.2
 
 WORKDIR /home/node/application
 
 ADD "./package.json" "/home/node/application/package.json"
 
-RUN ["npm", "install"]
+RUN ["npm", "i", "-g", "pnpm"]
 
-CMD ["npm", "start"]
+RUN ["pnpm", "i"]
+
+CMD ["pnpm", "start"]
