@@ -25,7 +25,10 @@ export default function OrderForm(props) {
                 ordered_by: auth.email || 'Unknown!',
             }),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'X-Content-Type-Options': 'nosniff', // reinforces the declared content-type
+                'X-XSS-Protection': '1; mode=block',
+                'X-Frame-Options': 'sameorigin'
             }
         }).then(res => res.json());
         //.then(response => console.log("Success", JSON.stringify(response)))
