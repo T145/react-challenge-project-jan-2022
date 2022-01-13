@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { SERVER_IP, HEADERS } from '../../private';
 
 const DELETE_ORDER_URL = `${SERVER_IP}/api/delete-order`;
@@ -40,7 +41,9 @@ const OrdersList = (props) => {
                     <p>Quantity: {order.quantity}</p>
                 </div>
                 <div className="col-md-4 view-order-right-col">
-                    <button className="btn btn-success">Edit</button>
+                    <Link to={'/order/' + order._id} >
+                        <button className="btn btn-success">Edit</button>
+                    </Link>
                     <button className="btn btn-danger" onClick={() => deleteOrder(order._id)}>Delete</button>
                 </div>
             </div>
